@@ -90,17 +90,17 @@
 <meta property="og:url" content="https://zhaoyan1994.github.io/fairyland/2016/12/06/Android监听ScrollView的滑动事件/index.html">
 <meta property="og:site_name" content="幻境">
 <meta property="og:description" content="在实际项目开发中，我们往往需要做一些自定义的控件以实现特别的动画效果。比如在我做巴巴快巴较早的一个版本时候，就涉及到需要捕捉用户手势的动画控件。当时的任务是实现一个标题栏，用户下拉可以把它拉长，松开后它又弹回原有的高度。我们的方案是采用了ScrollView来装整个布局，在ScrollView里面动态获取用户手指的滑动状态，动态控制标题栏的拉伸和收缩状态。但是在实现这一方案时先要解决一个问题，就是">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件1.png">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件2.png">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件3.png">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件4.png">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件5.png">
-<meta property="og:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件6.png">
-<meta property="og:updated_time" content="2016-12-06T03:41:15.879Z">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B61.png">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B62.png">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B63.png">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B64.png">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B65.png">
+<meta property="og:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B66.png">
+<meta property="og:updated_time" content="2016-12-06T03:46:45.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android监听ScrollView的滑动事件">
 <meta name="twitter:description" content="在实际项目开发中，我们往往需要做一些自定义的控件以实现特别的动画效果。比如在我做巴巴快巴较早的一个版本时候，就涉及到需要捕捉用户手势的动画控件。当时的任务是实现一个标题栏，用户下拉可以把它拉长，松开后它又弹回原有的高度。我们的方案是采用了ScrollView来装整个布局，在ScrollView里面动态获取用户手指的滑动状态，动态控制标题栏的拉伸和收缩状态。但是在实现这一方案时先要解决一个问题，就是">
-<meta name="twitter:image" content="https://zhaoyan1994.github.io/fairyland/uploads/Android监听ScrollView的滑动事件1.png">
+<meta name="twitter:image" content="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B61.png">
 
 
 
@@ -318,11 +318,11 @@
 
       
         <p>在实际项目开发中，我们往往需要做一些自定义的控件以实现特别的动画效果。比如在我做巴巴快巴较早的一个版本时候，就涉及到需要捕捉用户手势的动画控件。当时的任务是实现一个标题栏，用户下拉可以把它拉长，松开后它又弹回原有的高度。我们的方案是采用了ScrollView来装整个布局，在ScrollView里面动态获取用户手指的滑动状态，动态控制标题栏的拉伸和收缩状态。但是在实现这一方案时先要解决一个问题，就是ScrollView的setOnScrollChangeListener()方法是在API23以上才可用的，也就是说Android6.0以下的机器是基本没办法兼容的。直接设置监听器不行，只能使用别的方式。</p>
-<p>值得庆幸的是，ScrollView本身有一个叫做onScrollChanged()的方法，如图所示：<br><img src="uploads/Android监听ScrollView的滑动事件1.png" alt=""><br>onScrollChanged里面有4个参数，分别是l、t、oldl、oldt。安卓的坐标是以界面的左上角为原点（0,0）,从左向右x坐标增加，从上到下，y坐标增加。l代表当前返回的用户手指的x坐标,t代表当前返回的用户手指的y坐标。Oldl和oldt则代表上一次获取的x和y坐标的值。</p>
+<p>值得庆幸的是，ScrollView本身有一个叫做onScrollChanged()的方法，如图所示：<br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B61.png" alt=""><br>onScrollChanged里面有4个参数，分别是l、t、oldl、oldt。安卓的坐标是以界面的左上角为原点（0,0）,从左向右x坐标增加，从上到下，y坐标增加。l代表当前返回的用户手指的x坐标,t代表当前返回的用户手指的y坐标。Oldl和oldt则代表上一次获取的x和y坐标的值。</p>
 <p>既然如此，我们可以自建View继承ScrollView，覆写它的onScrollChanged()方法，写一个接口把这l、t、oldl、oldt四个值抛出去就可以了。明白了这个原理，我们就可以开始操作：</p>
-<p>步骤一、创建自己的控件ListenedScrollView继承ScrollView<br><img src="uploads/Android监听ScrollView的滑动事件2.png" alt=""></p>
-<p>步骤二、创建接口ScrollViewListener<br><img src="uploads/Android监听ScrollView的滑动事件3.png" alt=""></p>
-<p>步骤三、在Activity中新建一个类实现这个listener接口及相关的方法，并设置为我们自建控件的监听器。<br><img src="uploads/Android监听ScrollView的滑动事件4.png" alt=""><br><img src="uploads/Android监听ScrollView的滑动事件5.png" alt=""><br><img src="uploads/Android监听ScrollView的滑动事件6.png" alt=""></p>
+<p>步骤一、创建自己的控件ListenedScrollView继承ScrollView<br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B62.png" alt=""></p>
+<p>步骤二、创建接口ScrollViewListener<br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B63.png" alt=""></p>
+<p>步骤三、在Activity中新建一个类实现这个listener接口及相关的方法，并设置为我们自建控件的监听器。<br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B64.png" alt=""><br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B65.png" alt=""><br><img src="http://ohqvkjnc5.bkt.clouddn.com/Android%E7%9B%91%E5%90%ACScrollView%E7%9A%84%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B66.png" alt=""></p>
 <p>至此，我们就可以在外部捕捉用户手势操作而进行特效动画的实现了。</p>
 
       
