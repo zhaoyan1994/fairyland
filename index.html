@@ -253,6 +253,129 @@
             
               
                 
+                <a class="post-title-link" href="/fairyland/2017/02/08/Android-Platform-Structure-Intriduction/" itemprop="url">
+                  Android Platform Structure Intriduction
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-08T14:03:58+08:00" content="2017-02-08">
+              2017-02-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/fairyland/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/fairyland/2017/02/08/Android-Platform-Structure-Intriduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/08/Android-Platform-Structure-Intriduction/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Android平台架构-Android是建立在Linux2-6系统之上的移动平台操作系统，它的出现是历史发展到一定阶段必然的产物。个人计算机的不断小型化，与移动话机的不断小型化，最终结合在了一起，掀起了移动互联网的十年大潮。今天我们需要来剖析一下Android平台的架构，以及我们今后重点发展的方向。便于个人复习，我将自上而下进行总结。"><a href="#Android平台架构-Android是建立在Linux2-6系统之上的移动平台操作系统，它的出现是历史发展到一定阶段必然的产物。个人计算机的不断小型化，与移动话机的不断小型化，最终结合在了一起，掀起了移动互联网的十年大潮。今天我们需要来剖析一下Android平台的架构，以及我们今后重点发展的方向。便于个人复习，我将自上而下进行总结。" class="headerlink" title="Android平台架构  Android是建立在Linux2.6系统之上的移动平台操作系统，它的出现是历史发展到一定阶段必然的产物。个人计算机的不断小型化，与移动话机的不断小型化，最终结合在了一起，掀起了移动互联网的十年大潮。今天我们需要来剖析一下Android平台的架构，以及我们今后重点发展的方向。便于个人复习，我将自上而下进行总结。"></a>Android平台架构  Android是建立在Linux2.6系统之上的移动平台操作系统，它的出现是历史发展到一定阶段必然的产物。个人计算机的不断小型化，与移动话机的不断小型化，最终结合在了一起，掀起了移动互联网的十年大潮。今天我们需要来剖析一下Android平台的架构，以及我们今后重点发展的方向。便于个人复习，我将自上而下进行总结。</h3><p>一、应用层<br>  应用层是直接与用户进行对话的，绝大多数移动开发程序员都在这一层从事界面开发工作。这一层，功能变动最快，开发需求最大，所需的程序员最多。因此，我们80%以上的程序员，都集中在这一层，从事着简单重复的低端一线工作。可以说，这一层也是有不少的积累的，但是技术含量不高，从大神那边抄一段代码，从CSDN或者23Code上面找一些源码来，改改自己用。能自己开发特效控件或者开发框架的Android开发者少之又少。与后台或者从事算法的程序员相比，这一批程序员知识较为碎片化，分散而且代谢周期短，无法成为一个完整的知识结构体系，而从长远来看，要必须涉及一个系统整个流程，才可以成为一名合格的IT人，才可以成为一个知识结构体系完整，能堪大任的人。因此，长久在这一层中停留绝非良策。</p>
+<p>二、框架层（FrameWork）<br>  Android为程序开发者提供了大量的接口，程序员通过访问安卓提供的API框架，可以完成包括影音视频、游戏等在内的绝大部分程序的开发。建议开发者熟练掌握这些API。在这一层，程序员会遇到比较Android比较深入的特性，往往这一层对开发者的性能优化、高级特性的把握，等等要求也比较高，熟练运用框架层的各个原件的基本特性并佐以设计模式和各种算法优化，是一名成熟Android高级工程师、系统架构师的必由之路。能够学到这一层的人员不多，能够掌握各种设计模式、算法和编程思想来辅佐这一层进行程序设计的人员更加稀缺，未来高性能、高体验的图形和音视频系统设计，要更加依赖这样的高级软件设计师。</p>
+<p>三、运行库<br>  这一层提供C/C++编写的各种库，来支持FrameWork框架实现，高性能的游戏也需要编辑它的代码，图形图像视频等高效处理也需要调用这一层的库，JNI的程序设计，对于同时懂得底层和上层软件设计、又精通算法的程序员来说，是绝佳的成长领域。如果未来物联网时代到来，需要Android驱动开发，那么这一层更是绝佳的爆发层。</p>
+<p>四、Linux内核层<br>  这一层不是很了解，大约是很多大公司，特别是手机设备生产厂商需要精通这一层的人才，需要进行系统订制优化、裁剪啥的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/fairyland/2017/01/11/微信小程序与移动互联网大潮的落幕/" itemprop="url">
                   微信小程序与移动互联网大潮的落幕
                 </a>
@@ -786,7 +909,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/fairyland/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
